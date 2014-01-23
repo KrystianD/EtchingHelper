@@ -47,7 +47,7 @@ SIGNAL(TIMER0_OVF_vect)
 		ledPart = 0;
 }
 
-void ledOutNum (uint8_t num)
+void ledOutNum(uint8_t num)
 {
 	if (num >= 100)
 	{
@@ -56,30 +56,30 @@ void ledOutNum (uint8_t num)
 	}
 	else
 	{
-		ledOut1 = pgm_read_byte (digits + num / 10);
-		ledOut2 = pgm_read_byte (digits + num % 10);
+		ledOut1 = pgm_read_byte(digits + num / 10);
+		ledOut2 = pgm_read_byte(digits + num % 10);
 	}
 }
-uint8_t ledGetChar (char c)
+uint8_t ledGetChar(char c)
 {
-	if (c >= '0' && c <= '9') return pgm_read_byte (digits + c - '0');
+	if (c >= '0' && c <= '9') return pgm_read_byte(digits + c - '0');
 	switch (c)
 	{
 	case '-': return 0b01000000;
 	case 'o': return 0b01011100;
 	}
 }
-void ledOutChar (char c1, char c2)
+void ledOutChar(char c1, char c2)
 {
-	ledOut1 = ledGetChar (c1);
-	ledOut2 = ledGetChar (c2);
+	ledOut1 = ledGetChar(c1);
+	ledOut2 = ledGetChar(c2);
 }
-// void ledOutHex (uint8_t num)
+// void ledOutHex(uint8_t num)
 // {
 	// uint8_t d1 = num >> 4;
-	// out1 (digits[d1]);
+	// out1(digits[d1]);
 	// uint8_t d2 = num & 0x0f;
-	// out2 (digits[d2]);
+	// out2(digits[d2]);
 // }
 
 #endif
