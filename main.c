@@ -38,26 +38,26 @@ void btnPress (uint8_t id)
 				desiredTemp++;
 		}
 		eeprom_busy_wait ();
-		eeprom_update_byte (0, 1);
-		eeprom_update_byte (1, desiredTemp);
+		eeprom_update_byte ((uint8_t*)0, 1);
+		eeprom_update_byte ((uint8_t*)1, desiredTemp);
 	}
 	settingsDisplay = 1000 / 10;
 }
 
 int main ()
 {
-	IO_OUTPUT(A1); IO_OUTPUT(B1); IO_OUTPUT(C1); IO_OUTPUT(D1); IO_OUTPUT(E1);
-	IO_OUTPUT(F1); IO_OUTPUT(G1); IO_OUTPUT(A2); IO_OUTPUT(B2); IO_OUTPUT(C2);
-	IO_OUTPUT(D2); IO_OUTPUT(E2); IO_OUTPUT(F2); IO_OUTPUT(G2);
+	IO_PUSH_PULL(A1); IO_PUSH_PULL(B1); IO_PUSH_PULL(C1); IO_PUSH_PULL(D1); IO_PUSH_PULL(E1);
+	IO_PUSH_PULL(F1); IO_PUSH_PULL(G1); IO_PUSH_PULL(A2); IO_PUSH_PULL(B2); IO_PUSH_PULL(C2);
+	IO_PUSH_PULL(D2); IO_PUSH_PULL(E2); IO_PUSH_PULL(F2); IO_PUSH_PULL(G2);
 
-	IO_OUTPUT(LED_RED);
-	IO_OUTPUT(LED_GREEN);
-	IO_OUTPUT(SWITCH);
+	IO_PUSH_PULL(LED_RED);
+	IO_PUSH_PULL(LED_GREEN);
+	IO_PUSH_PULL(SWITCH);
 
-	IO_INPUT_PULLUP(BTN1);
-	IO_INPUT_PULLUP(BTN2);
+	IO_INPUT_PP(BTN1);
+	IO_INPUT_PP(BTN2);
 
-	IO_OUTPUT(TX);
+	IO_PUSH_PULL(TX);
 	IO_LOW(TX);
 	IO_INPUT(RX);
 	IO_LOW(RX);
@@ -68,7 +68,7 @@ int main ()
 	if (tmp != 0xff)
 	{
 		eeprom_busy_wait ();
-		desiredTemp = eeprom_read_byte (1);
+		desiredTemp = eeprom_read_byte ((uint8_t*)1);
 	}
 
 	OSCCAL = 156;
