@@ -32,9 +32,13 @@
 #define BTN_LEFT  1
 #define BTN_RIGHT 0
 
-#define TEMP_START 50
+#define TEMP_START 70
 #define TEMP_MAX 90
 #define TEMP_MIN 10
+
+#define NO_TEMP_CHANGE_TIMEOUT 15
+#define MAX_RELAY_ON_TIME 20
+#define RELAY_DELAY_TIME 10
 
 // Utils
 #define LED_RED_ON IO_HIGH(LED_RED)
@@ -43,7 +47,7 @@
 #define LED_GREEN_ON IO_HIGH(LED_GREEN)
 #define LED_GREEN_OFF IO_LOW(LED_GREEN)
 
-#define SWITCH_ON IO_HIGH(SWITCH)
-#define SWITCH_OFF IO_LOW(SWITCH)
+#define SWITCH_ON IO_LOW(SWITCH)
+#define SWITCH_OFF IO_HIGH(SWITCH)
 
 #endif

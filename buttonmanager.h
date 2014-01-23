@@ -28,19 +28,19 @@ void bmCheck ()
 			if (!pinState)
 			{
 				btnState[i] = BM_STATE_PRESSED_TODEBOUNCE;
-				btnDebounce[i] = ticks;
+				btnDebounce[i] = timerTicks;
 			}
 		}
 		if (btnState[i] == BM_STATE_PRESSED_TODEBOUNCE)
 		{
-			if (ticks - btnDebounce[i] > 10 / 2)
+			if (timerTicks - btnDebounce[i] > 10 / 2)
 			{
 				if (!pinState)
 				{
 					btnState[i] = BM_STATE_PRESSED;
 					btnPress (i);
 
-					btnClick[i] = ticks;
+					btnClick[i] = timerTicks;
 				}
 				else
 				{
@@ -54,19 +54,19 @@ void bmCheck ()
 			{
 				if (btnState[i] == BM_STATE_PRESSED)
 				{
-					if (ticks - btnClick[i] > 600 / 2)
+					if (timerTicks - btnClick[i] > 600 / 2)
 					{
 						btnPress (i);
-						btnClick[i] = ticks;
+						btnClick[i] = timerTicks;
 						btnState[i] = BM_STATE_REPEATINGPRESS;
 					}
 				}
 				if (btnState[i] == BM_STATE_REPEATINGPRESS)
 				{
-					if (ticks - btnClick[i] > 200 / 2)
+					if (timerTicks - btnClick[i] > 200 / 2)
 					{
 						btnPress (i);
-						btnClick[i] = ticks;
+						btnClick[i] = timerTicks;
 					}
 				}
 			}

@@ -26,7 +26,7 @@ const PROGMEM uint8_t digits[] = {
 
 SIGNAL(TIMER0_OVF_vect)
 {
-	ticks++;
+	timerTicks++;
 	IO_HIGH(A1); IO_HIGH(B1); IO_HIGH(C1); IO_HIGH(D1); IO_HIGH(E1);
 	IO_HIGH(F1); IO_HIGH(G1); IO_HIGH(A2); IO_HIGH(B2); IO_HIGH(C2);
 	IO_HIGH(D2); IO_HIGH(E2); IO_HIGH(F2); IO_HIGH(G2);
