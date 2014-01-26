@@ -193,7 +193,7 @@ int main()
 				else
 				{
 					relayStartTemp = temp;
-					relayCheckTimeSecs = timerTicks;
+					relayCheckTimeSecs = secs;
 				}
 			}
 			if (secs - relayOnTimeSecs >= MAX_RELAY_ON_TIME)
